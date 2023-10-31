@@ -1,15 +1,12 @@
-import { useEffect } from "react";
-
+import { useState } from "react";
 import "./App.css";
+import { useFetch } from "./hooks/useFetch/useFetch";
 
 function App() {
-  useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((response) => console.log(response));
-  }, []);
+  const [url, setUrl] = useState("https://dummyjson.com/products");
+  const { data } = useFetch(url);
 
-  return <div className="App"></div>;
+  return <div className="App">{data && console.log(data)}</div>;
 }
 
 export default App;
