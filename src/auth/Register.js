@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./register.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Register({ setToken }) {
   // const [username, setUsername] = useState("");
@@ -15,19 +16,22 @@ function Register({ setToken }) {
 
     // Serverga yuboriladigan ma'lumotlar
     try {
-      const response = await fetch("https://reqres.in/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
+      // const response = await fetch("https://reqres.in/api/register", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ email, password }),
+      // });
+      const response = await axios.post("https://reqres.in/api/register", {
+        email,
+        password,
       });
-
-      if (response.ok) {
-        const data = await response.json();
-        setToken(data.token);
-        window.localStorage.setItem("token", data.token);
-        console.log("Registration successful:", data);
+      console.log(response);
+      if (response.status === 200) {
+        setToken(response.data.token);
+        window.localStorage.setItem("token", response.data.token);
+        console.log("Registration successful:", response.data);
         navigate("/");
         // Do something with the successful registration response
       } else {
