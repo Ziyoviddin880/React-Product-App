@@ -1,0 +1,15 @@
+.box {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.auth-container {
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 20px 10px;
+}
+.auth-btns a {
+}

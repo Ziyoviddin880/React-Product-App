@@ -1,0 +1,27 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+nav ul {
+  display: flex;
+  gap: 20px;
+}
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  padding: 10px 20px;
+  transition: all 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: black;
+  color: white;
+}
